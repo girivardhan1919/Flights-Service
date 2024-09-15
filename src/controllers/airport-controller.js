@@ -21,7 +21,7 @@ async function createAirport(req, res) {
   } catch (error) {
     ErrorResponse.error = error;
     return res
-      .status(StatusCodes.INTERNAL_SERVER_ERROR)
+      .status(error.statusCode  )
       .json(ErrorResponse);
   }
 }
@@ -56,7 +56,7 @@ async function getAirport(req, res) {
   }
 }
 
-async function destoryAirport(req, res) {
+async function destroyAirport(req, res) {
   try {
     const response = await AirportService.destoryAirport(req.params.id);
     SuccessResponse.data = response;
@@ -71,4 +71,9 @@ async function destoryAirport(req, res) {
   }
 }
 
-module.exports = { createAirport, getAirports, getAirport, destoryAirport };
+module.exports = { 
+  createAirport, 
+  getAirports, 
+  getAirport, 
+  destroyAirport 
+};

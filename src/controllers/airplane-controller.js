@@ -19,7 +19,7 @@ async function createAirplane(req,res){
   } catch (error) {
     ErrorResponse.error = error;
     return res
-            .status(StatusCodes.INTERNAL_SERVER_ERROR)
+              .status(error.statusCode)
             .json(ErrorResponse);
   }
 }
@@ -54,7 +54,7 @@ async function getAirplane(req, res) {
   }
 }
 
-async function destoryAirplane(req, res) {
+async function destroyAirplane(req, res) {
   try {
     const airplanes = await AirplaneService.destoryAirplane(req.params.id);
     SuccessResponse.data = airplanes;
@@ -69,4 +69,9 @@ async function destoryAirplane(req, res) {
   }
 }
 
-module.exports = { createAirplane, getAirplanes, getAirplane, destoryAirplane };
+module.exports = { 
+  createAirplane, 
+  getAirplanes, 
+  getAirplane, 
+  destroyAirplane 
+};

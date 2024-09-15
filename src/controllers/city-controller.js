@@ -19,9 +19,11 @@ async function createCity(req, res) {
   } catch (error) {
     ErrorResponse.error = error;
     return res
-      .status(StatusCodes.INTERNAL_SERVER_ERROR)
+      .status(error.statusCode)
       .json(ErrorResponse);
   }
 }
 
-module.exports = {createCity}
+module.exports = {
+  createCity
+}
