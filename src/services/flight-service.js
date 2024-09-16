@@ -93,4 +93,4 @@ async function updateSeats(data) {
   }
 }
 
-module.exports = { createFlight, getAllFlights };
+module.exports = { createFlight, getAllFlights, getFlight, updateSeats };
